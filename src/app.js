@@ -13,24 +13,13 @@ app.use(express.json())
 
 app.use(cors())
 
-app.get('/hello_world', (req, res)=>{
-    res.send('Testando')
-    
-})
-
-app.post('/create', (req, res) => {
-    const title = req.body.title
-    res.send(`Titulo: ${title}`)
-})
-
-
 
 app.post('/create_post',async(req,res)=>{
 
     try{
-        const {title, content, description} = req.body
+        const {title, description, content } = req.body
 
-        const post = await Post.create({title, content, description})
+        const post = await Post.create({title, description, content})
 
         res.send(post)
     }catch(err){
