@@ -28,9 +28,9 @@ app.post('/create', (req, res) => {
 app.post('/create_post',async(req,res)=>{
 
     try{
-        const {title, content} = req.body
+        const {title, content, description} = req.body
 
-        const post = await Post.create({title, content})
+        const post = await Post.create({title, content, description})
 
         res.send(post)
     }catch(err){
@@ -66,9 +66,9 @@ app.patch('/update_post/:post_id', async(req, res)=> {
     try{    
         const postId = req.params.post_id
 
-        const {title, content }= req.body
+        const {title, content, description }= req.body
 
-        const post = await Post.findByIdAndUpdate(postId, {title, content}, {new: true})
+        const post = await Post.findByIdAndUpdate(postId, {title, content, description}, {new: true})
 
         res.send({post})
     }catch(err){
