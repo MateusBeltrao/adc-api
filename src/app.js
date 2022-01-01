@@ -6,7 +6,7 @@ const cors = require('cors')
 
 const port = process.env.PORT 
 
-const Post = require('./models/Post')
+const Post = require('./Post')
 
 app.use(express.json())
 
@@ -45,7 +45,7 @@ app.get('/show_post/:post_id', async(req, res)=>{
 
         const post = await Post.findById(postId)
 
-        res.send(post)
+        res.send({post})
     }catch(err){
         res.status(400).send(err)
     }

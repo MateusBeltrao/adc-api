@@ -1,14 +1,15 @@
-const mongoose = require('../db')
+const mongoose = require('./db')
 require('dotenv').config()
+const { Schema } = mongoose;
 
-const PostSchema = new mongoose.Schema({
+var PostSchema = new Schema({
     title: {
         type: String,
-        require: true
+        required: true
     },
     content: {
         type: String,
-        require: true
+        require: [true, "oi"]
     },
     description: {
         type: String,
